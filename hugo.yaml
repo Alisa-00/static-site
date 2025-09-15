@@ -13,7 +13,7 @@ disableKinds:
 
 params:
   _merge: deep # Import default config
-  rssFullContent: true
+  rssFullContent: false
   homePagerSize: 5
   sectionPagerSize: 10000 # Default: 10, set this to a large number to remove pagination
   images:
