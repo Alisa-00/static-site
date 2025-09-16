@@ -1,7 +1,7 @@
 ---
-date: "2023-01-01T08:00:00-07:00"
+date: 2025-09-16
 draft: false
 title: Home
 ---
 
-My personal site where I talk about personal projects, interests and technical details of whatever I may be doing on my free time.
+Welcome! This space is where I share thoughts, comments and talk about some of my personal projects or anything tech-related I do in my free time.

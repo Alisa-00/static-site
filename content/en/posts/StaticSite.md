@@ -1,7 +1,6 @@
 ---
 slug: staticsite
-date: 2025-09-14T11:46:06+03:00
-# lastmod: 2025-09-14T11:46:06+03:00 # Last modification date
+date: 2025-09-16
 tags:
 - Cloud
 - Serverless
@@ -14,16 +13,18 @@ I recently put together a simple pipeline for generating and hosting a static we
 This setup takes advantage of S3 for safe storage, cloudfront for hosting with https and a Lambda function for automatic generation and deployment of the site when any change is applied, such as a new post entry being added.
 This is convenient because if I wrote a new entry I can simply upload it to the S3 bucket and then the site will be automatically updated. It is a serverless architecture that does not require my attention at all.
 
-## Creating the source files for the site
-I decided to keep it simple and use a template for an already existing static site generator and customize those instead of making my own from scratch. I used [Hugo](https://gohugo.io/) for a static site generator, and use [Yue](https://github.com/CyrusYip/hugo-theme-yue) as the template.
-After spending some time customizing everything to my liking, I was ready to upload this to the Input S3 bucket.
+## Setting up S3
 
-### Create the input S3 bucket
 Simply upload the source files to a new S3 bucket. This will be the source bucket where we upload new posts or other changes we want to apply to the static site.
 We will also need to create an event notification to run the lambda function, and also assign the appropriate permissions to make sure the lambda function can read from the bucket, but we can take care of those later.
 
-### Create the output S3 bucket
 Same as the previous bucket. This bucket will be our destination bucket, where the files for the static site itself are stored and served to the public internet. We can deactivate "Block all public access" which will let us access the site through a url. Let's take the chance here to make sure the site is looking just like we expect it to, before making further setups in our cloud.
+
+### Preparing the source files
+I won't provide much detail here as its not the point of this blog. Using a static site generator and a templates for it makes it pretty easy to create and customize your own site. I used [Hugo](https://gohugo.io/) as the static site generator and [Yue](https://github.com/CyrusYip/hugo-theme-yue) as the base theme.
+
+After customizing to your liking, we simply need to upload the hugo project into our source S3 bucket. You can also upload the generated site files into the public bucket 
+
 
 ## Create the CloudFront distribution
 Now 
