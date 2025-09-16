@@ -36,7 +36,7 @@ languages:
     languageCode: en-US
     languageDirection: ltr
     languageName: English
-    title: Alisa's static site # Shown in home page
+    title: Alisa Wilhelm # Shown in home page
     weight: 1
     menus:
       main:
@@ -49,12 +49,9 @@ languages:
         - name: Tags
           pageRef: /tags
           weight: 30
-        - name: Categories
-          pageRef: /categories
-          weight: 40
         - name: About
           pageRef: /about
-          weight: 50
+          weight: 40
     params:
       dateFormat: Jan 02, 2006 # See https://gohugo.io/functions/time/format/
       author: Alisa Wilhelm # Default author, supports single value or list, used in single page

@@ -3,16 +3,16 @@ slug: staticsite
 date: 2025-09-14T11:46:06+03:00
 # lastmod: 2025-09-14T11:46:06+03:00 # Last modification date
 tags:
-- AWS
+- Cloud
 - Serverless
 - CI/CD
-categories:
-- Cloud
-title:  Automating static site deployment with CI/CD on AWS cloud.
+title:  Automating static site deployment with CI/CD on AWS
+summary: A funny thing I tried
 ---
 
-I recently put together a simple pipeline for generating and hosting a static website completely on AWS, with minimal . This setup takes advantage of S3 for safe storage and static site hosting, cloudfront for low latency distribution and a Lambda function for automatic update of the static site upon any change on the source files, such as a new post.
-This lets me write blog entries in markdown files and simply drop them into the source S3 bucket, this update will kick off the lambda function and it will :
+I recently put together a simple pipeline for generating and hosting a static website completely on AWS, with minimal maintenance work after setup.
+This setup takes advantage of S3 for safe storage, cloudfront for hosting with https and a Lambda function for automatic generation and deployment of the site when any change is applied, such as a new post entry being added.
+This is convenient because if I wrote a new entry I can simply upload it to the S3 bucket and then the site will be automatically updated. It is a serverless architecture that does not require my attention at all.
 
 ## Creating the source files for the site
 I decided to keep it simple and use a template for an already existing static site generator and customize those instead of making my own from scratch. I used [Hugo](https://gohugo.io/) for a static site generator, and use [Yue](https://github.com/CyrusYip/hugo-theme-yue) as the template.
@@ -66,3 +66,7 @@ For hosting, there are two main options:
 ## Final Thoughts
 With this setup, all I need to do is write posts in Markdown and drop them into S3. The Lambda function handles generation, and S3 (optionally with CloudFront) serves the site to the world. No manual builds, no servers to manage—just a simple automated publishing flow on AWS.
 
+Still, the question remains. Why create this pipeline, and why on AWS if there are easier and better alternatives for this use case, such as github pages which would be completely free as opposed to potentially having a cost.
+And its simply because I wanted to. I felt like doing something on AWS. I was doing some work already to set up this site, and I thought it could be fun to try something like this, its a simple but useful exercise.
+
+While I don't actually use this pipeline to maintain and deploy my site because of its downsides, it is still useful architecture that could be useful for many use cases such as, one example that comes to mind is storing music files unmodified and also a normalized version of the file, where one bucket would store either original or normalized, and the lambda function would apply normalization to the file.
